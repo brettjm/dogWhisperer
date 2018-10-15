@@ -1,15 +1,11 @@
 import time
 import RPi.GPIO as GPIO
 from twilio.rest import Client
+import twilio_info
 
 PIN_FOOD  = 7
 PIN_POTTY = 8
 
-ACCOUNT_SID   = 'AC06d136e738e32531a3c1f14bf50adf20'
-AUTHTOKEN     = 'cbe0e851ddff3d88f6426bafa044b7c8'
-MY_NUMBER     = '+18015084976'  # Brett's number
-#MY_NUMBER     = '+19728387046'  # Sarah's number
-TWILIO_NUMBER = '+13854744945'
 
 def setup():
    GPIO.setmode(GPIO.BCM)
