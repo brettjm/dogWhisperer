@@ -1,11 +1,10 @@
 import time
 import RPi.GPIO as GPIO
 from twilio.rest import Client
-import twilio_info
+import twVars
 
 PIN_FOOD  = 7
 PIN_POTTY = 8
-
 
 def setup():
    GPIO.setmode(GPIO.BCM)
@@ -13,29 +12,33 @@ def setup():
    GPIO.setup(PIN_POTTY, GPIO.IN, GPIO.PUD_DOWN)
 
 def sendAlert(message):
-   twilioClient = Client(ACCOUNT_SID, AUTHTOKEN)
-   twilioClient.messages.create(body=message, from_=TWILIO_NUMBER, to=MY_NUMBER)
+   twilioClient = Client(twVars.ACCOUNT_SID, twVars.AUTHTOKEN)
+   twilioClient.messages.create(body  = message, 
+                                from_ = twVars.TWILIO_NUMBER, 
+                                to    = twVars.MY_NUMBER_1)
+   twilioClient.messages.create(body  = message, 
+                                from_ = twVars.TWILIO_NUMBER, 
+                                to    = twVars.MY_NUMBER_2)
 
 def main():
    setup()
+   print("Starting up...")
 
    # PIN 7 AND 3.3V
    # normally 0, when connected 1
    try:
       while(True):
          if (GPIO.input(PIN_FOOD)):
-            print("Food")
+            sendAlert('Feed me please!')
             time.sleep(2)
 
-         if (GPIO.input(PIN_POTTY)):
+         elif (GPIO.input(PIN_POTTY)):
             print("Potty")
             time.sleep(2)
-   
+
    except KeyboardInterrupt:
       GPIO.cleanup()
-      print("Exiting")
-
-   # sendAlert('Feed me please!')
+      print("\nExiting")
 
 if __name__=="__main__":
    main()
