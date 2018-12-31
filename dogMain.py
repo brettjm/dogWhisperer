@@ -36,7 +36,7 @@ def main():
          elif (GPIO.input(PIN_POTTY)):
             print("Potty")
             subprocess.call(['mpg123', '-q', 'pee_clip.mp3'])
-            time.sleep(2)
+            time.sleep(1)
 
    except KeyboardInterrupt:
       GPIO.cleanup()
