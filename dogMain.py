@@ -1,5 +1,6 @@
 import time
 import RPi.GPIO as GPIO
+import subprocess
 from twilio.rest import Client
 import twVars
 
@@ -34,6 +35,7 @@ def main():
 
          elif (GPIO.input(PIN_POTTY)):
             print("Potty")
+            subprocess.call(['mpg123', '-q', 'pee_clip.mp3'])
             time.sleep(2)
 
    except KeyboardInterrupt:
