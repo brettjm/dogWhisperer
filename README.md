@@ -4,7 +4,7 @@ Tell your human what you want through text and voice!
 
 ## Prerequisites
 
-create a file called "twVars.py" and enter the following info:
+Sign up for a free Twilio account and make a file called "twVars.py" in your main directory. Enter the following:
 
 ```
 ACCOUNT_SID   = '***'
@@ -13,7 +13,7 @@ MY_NUMBER_1   = '***'
 TWILIO_NUMBER = '***'
 ```
 
-Replace *** with your Twilio account info
+Replacing *** with your Twilio account info
 
 ## Deployment
 
